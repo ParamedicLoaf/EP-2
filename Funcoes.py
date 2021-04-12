@@ -7,4 +7,12 @@ def cria_baralho():
     
     return baralho
 
-print(cria_baralho())
+def extrai_naipe(carta):
+    return carta[len(carta)-1]
+
+def extrai_valor(carta):
+    valor = ''
+    for i in range(len(carta)-1):
+        valor += carta[i]
+        
+    return valor
