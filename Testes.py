@@ -15,3 +15,8 @@ print("\033[1;33;40m4") #Amarelo
 print("\033[0;37;40m4") #Normal
 
 print(extrai_naipe('A♣'))
+print(extrai_valor('A♣'))
+cria_baralho()
+baralho = ['6♥', 'J♥', '9♣', '9♥']
+
+print(lista_movimentos_possiveis(baralho,3))

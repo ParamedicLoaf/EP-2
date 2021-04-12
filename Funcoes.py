@@ -16,3 +16,20 @@ def extrai_valor(carta):
         valor += carta[i]
         
     return valor
+
+def lista_movimentos_possiveis(baralho, indice):
+    movimentos = []
+
+    if indice == 0:
+        return movimentos
+    elif indice < 3:
+        if (extrai_valor(baralho[indice]) == extrai_valor(baralho[indice-1])) or (extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice-1])):
+            movimentos.append(1)
+    else:
+        if (extrai_valor(baralho[indice]) == extrai_valor(baralho[indice-1])) or (extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice-1])):
+            movimentos.append(1)
+
+        if (extrai_valor(baralho[indice]) == extrai_valor(baralho[indice-3])) or (extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice-3])):
+            movimentos.append(3)
+    
+    return movimentos
