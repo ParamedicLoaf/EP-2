@@ -25,5 +25,16 @@ while jogo:
     baralho = cria_baralho()
     print_colorido(baralho)
 
+    while possui_movimentos_possiveis(baralho):
+        escolha = input('Escolha uma carta (digite um número entre 1 e {0}): '.format(len(baralho)))
+        while not escolha in range(1,len(baralho)+1):
+            escolha = input('Posição inválida. Por favor, escolha um número entre 1 e {0}: '.format(len(baralho)))
+
+        carta = baralho[int(escolha)-1]
+
+        print(carta)
+
+
+
     jogo = False
 

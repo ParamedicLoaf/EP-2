@@ -51,46 +51,36 @@ def possui_movimentos_possiveis(baralho):
 def print_colorido(baralho):
     for carta in baralho:
         naipe = extrai_naipe(carta)
+
         if naipe == '♣':
             #verde
-            colorida = '\033[1;32;40m' + carta + '\033[0;37;40m'
-
-            if baralho.index(carta)+1 < 10:
-                posicao = ' '+ str(baralho.index(carta)+1)
-            else:
-                posicao = str(baralho.index(carta)+1)
-            
-            print('{0}. {1}'.format(posicao, colorida))
-
+            colorida = '\033[1;32;40m' + formatacao_da_carta(carta) + '\033[0;37;40m'
         elif naipe == '♦':
             #roxo
-            colorida = '\033[1;35;40m' + carta + '\033[0;37;40m'
-
-            if baralho.index(carta)+1 < 10:
-                posicao = ' '+ str(baralho.index(carta)+1)
-            else:
-                posicao = str(baralho.index(carta)+1)
-
-            print('{0}. {1}'.format(posicao, colorida))
+            colorida = '\033[1;35;40m' + formatacao_da_carta(carta) + '\033[0;37;40m'
         elif naipe == '♥':
             #vermelho
-            colorida = '\033[1;31;40m' + carta + '\033[0;37;40m'
-
-            if baralho.index(carta)+1 < 10:
-                posicao = ' '+ str(baralho.index(carta)+1)
-            else:
-                posicao = str(baralho.index(carta)+1)
-
-            print('{0}. {1}'.format(posicao, colorida))
+            colorida = '\033[1;31;40m' + formatacao_da_carta(carta) + '\033[0;37;40m'
         else:
             #amarelo
-            colorida = '\033[1;33;40m' + carta + '\033[0;37;40m'
+            colorida = '\033[1;33;40m' + formatacao_da_carta(carta) + '\033[0;37;40m'
+        
+        posicao = formatacao_do_numero(baralho, carta)
 
-            if baralho.index(carta)+1 < 10:
-                posicao = ' '+ str(baralho.index(carta)+1)
-            else:
-                posicao = str(baralho.index(carta)+1)
-
-            print('{0}. {1}'.format(posicao, colorida))
+        print('{0}. {1}'.format(posicao, colorida))
 
     print()
+
+def formatacao_da_carta(carta):
+    if len(carta) < 3:
+        return ' '+carta
+    else:
+        return carta
+
+def formatacao_do_numero(baralho, carta):
+    if baralho.index(carta)+1 < 10:
+        posicao = ' '+ str(baralho.index(carta)+1)
+    else:
+        posicao = str(baralho.index(carta)+1)
+    
+    return posicao
