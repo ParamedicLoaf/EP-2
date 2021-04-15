@@ -40,3 +40,10 @@ def empilha(baralho, origem, destino):
     baralho[destino] = carta
 
     return baralho
+
+def possui_movimentos_possiveis(baralho):
+    for carta in baralho:
+        if lista_movimentos_possiveis(baralho, baralho.index(carta)) != []:
+            return True
+    
+    return False
