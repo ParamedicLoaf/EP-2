@@ -47,3 +47,50 @@ def possui_movimentos_possiveis(baralho):
             return True
     
     return False
+
+def print_colorido(baralho):
+    for carta in baralho:
+        naipe = extrai_naipe(carta)
+        if naipe == '♣':
+            #verde
+            colorida = '\033[1;32;40m' + carta + '\033[0;37;40m'
+
+            if baralho.index(carta)+1 < 10:
+                posicao = ' '+ str(baralho.index(carta)+1)
+            else:
+                posicao = str(baralho.index(carta)+1)
+            
+            print('{0}. {1}'.format(posicao, colorida))
+
+        elif naipe == '♦':
+            #roxo
+            colorida = '\033[1;35;40m' + carta + '\033[0;37;40m'
+
+            if baralho.index(carta)+1 < 10:
+                posicao = ' '+ str(baralho.index(carta)+1)
+            else:
+                posicao = str(baralho.index(carta)+1)
+
+            print('{0}. {1}'.format(posicao, colorida))
+        elif naipe == '♥':
+            #vermelho
+            colorida = '\033[1;31;40m' + carta + '\033[0;37;40m'
+
+            if baralho.index(carta)+1 < 10:
+                posicao = ' '+ str(baralho.index(carta)+1)
+            else:
+                posicao = str(baralho.index(carta)+1)
+
+            print('{0}. {1}'.format(posicao, colorida))
+        else:
+            #amarelo
+            colorida = '\033[1;33;40m' + carta + '\033[0;37;40m'
+
+            if baralho.index(carta)+1 < 10:
+                posicao = ' '+ str(baralho.index(carta)+1)
+            else:
+                posicao = str(baralho.index(carta)+1)
+
+            print('{0}. {1}'.format(posicao, colorida))
+
+    print()

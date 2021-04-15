@@ -20,3 +20,5 @@ cria_baralho()
 baralho = ['6♥', 'J♥', '9♣', '9♥']
 
 print(lista_movimentos_possiveis(baralho,3))
+
+print(int(' 1'))
