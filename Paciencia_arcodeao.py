@@ -27,12 +27,25 @@ while jogo:
 
     while possui_movimentos_possiveis(baralho):
         escolha = input('Escolha uma carta (digite um número entre 1 e {0}): '.format(len(baralho)))
-        while not escolha in range(1,len(baralho)+1):
+        while not escolha in range_em_strings(baralho):
             escolha = input('Posição inválida. Por favor, escolha um número entre 1 e {0}: '.format(len(baralho)))
 
         carta = baralho[int(escolha)-1]
 
-        print(carta)
+        while len(lista_movimentos_possiveis(baralho, baralho.index(carta))) == 0:
+            escolha = input('A carta {0} não pode se movida. Por favor, escolha um número entre 1 e {1}: '.format(carta_colorida(carta), len(baralho)))
+            
+            while not escolha in range_em_strings(baralho):
+                escolha = input('Posição inválida. Por favor, escolha um número entre 1 e {0}: '.format(len(baralho)))
+            
+            carta = baralho[int(escolha)-1]
+        
+        movimentos = lista_movimentos_possiveis(baralho, baralho.index(carta))
+        if len(movimentos) == 1:
+            baralho = empilha(baralho, baralho.index(carta), baralho.index(carta)-movimentos[0])
+
+        print_colorido(baralho)
+
 
 
 

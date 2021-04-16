@@ -71,6 +71,23 @@ def print_colorido(baralho):
 
     print()
 
+def carta_colorida(carta):
+    naipe = extrai_naipe(carta)
+    if naipe == '♣':
+        #verde
+        colorida = '\033[1;32;40m' + carta + '\033[0;37;40m'
+    elif naipe == '♦':
+        #roxo
+        colorida = '\033[1;35;40m' + carta + '\033[0;37;40m'
+    elif naipe == '♥':
+        #vermelho
+        colorida = '\033[1;31;40m' + carta + '\033[0;37;40m'
+    else:
+        #amarelo
+        colorida = '\033[1;33;40m' + carta + '\033[0;37;40m'
+    
+    return colorida
+
 def formatacao_da_carta(carta):
     if len(carta) < 3:
         return ' '+carta
@@ -84,3 +101,11 @@ def formatacao_do_numero(baralho, carta):
         posicao = str(baralho.index(carta)+1)
     
     return posicao
+
+def range_em_strings(baralho):
+    range_string = []
+
+    for i in range(1,len(baralho)+1):
+        range_string.append('{0}'.format(i))
+
+    return range_string
