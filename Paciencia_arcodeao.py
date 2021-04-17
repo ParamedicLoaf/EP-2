@@ -23,6 +23,9 @@ input('Aperte [Enter] para iniciar o jogo...')
 jogo = True
 while jogo:
     baralho = cria_baralho()
+
+    print()
+    print('Estado atual do baralho:')
     print_colorido(baralho)
 
     while possui_movimentos_possiveis(baralho):
@@ -43,10 +46,28 @@ while jogo:
         movimentos = lista_movimentos_possiveis(baralho, baralho.index(carta))
         if len(movimentos) == 1:
             baralho = empilha(baralho, baralho.index(carta), baralho.index(carta)-movimentos[0])
+        else:
+            print('Sobre qual carta você quer empilhar o {0}?'.format(carta_colorida(carta)))
+            opcoes = [baralho[baralho.index(carta)-movimentos[0]],baralho[baralho.index(carta)-movimentos[1]]]
+            print_colorido(opcoes)
+            escolha = input('Digite o número de sua escolha (1 ou 2): ')
 
+            while escolha != '1' and escolha != '2':
+                print('Opção inválida. Sobre qual carta você quer empilhar o {0}?'.format(carta_colorida(carta)))
+                opcoes = [baralho[baralho.index(carta)-movimentos[0]],baralho[baralho.index(carta)-movimentos[1]]]
+                print_colorido(opcoes)
+                escolha = input('Digite o número de sua escolha (1 ou 2): ')
+
+            escolha = int(escolha)
+
+            if escolha == 1:
+                baralho = empilha(baralho, baralho.index(carta), baralho.index(carta)-movimentos[0])
+            else:
+                baralho = empilha(baralho, baralho.index(carta), baralho.index(carta)-movimentos[1])
+
+        print()
+        print('Estado atual do baralho:')
         print_colorido(baralho)
-
-
 
 
     jogo = False
