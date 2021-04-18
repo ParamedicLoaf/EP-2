@@ -69,6 +69,19 @@ while jogo:
         print('Estado atual do baralho:')
         print_colorido(baralho)
 
+    if len(baralho) == 1:
+        print('Parabéns, você venceu e tem muita paciência!')
+    else:
+        print('Não há mais movimentos possíveis. Você perdeu.')
+    
+    print()
+    de_novo = input('Deseja jogar novamente? (s/n): ')
 
-    jogo = False
+    while de_novo != 's' and de_novo != 'n':
+        de_novo = input('Opção inválida. Deseja jogar novamente? (Digite s para sim e n para não): ')
+    
+    if de_novo == 'n':
+        jogo = False
 
+print()
+print('Até a próxima!')
